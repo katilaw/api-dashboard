@@ -1,0 +1,53 @@
+<div class="small-6 small-offset-3 columns">
+
+  <div class="callout primary">
+    <h3>Location</h3>
+    <p>
+      <%= binding.pry %>
+      <%= @geolocation.city %>,
+      <%= @geolocation.state %>,
+      <%= @geolocation.country %>
+    </p>
+  </div>
+
+  <div class="callout primary">
+    <h3>Weather</h3>
+    <p>The current temperature is: <% @temp %></p>
+  </div>
+</div>
+
+<div class="callout primary" id="News">
+  <h3>News</h3>
+  <p>
+    Here are today's top headlines:
+  </p>
+  <ul>
+    <% @news.each do |story| %>
+    <p>
+    <% if story['multimedia'][0].nil? %>
+      <img id="ezra" src="http://static01.nyt.com/images/icons/t_logo_291_black.png">
+    <% else %>
+      <img src=<%= story['multimedia'][0]['url'] %> >
+    <% end %>
+    <a href=" <%= story["url"]%>"><%= story["title"] %></a>
+   </p>
+   <br>
+   <% end %>
+  </ul>
+</div>
+ 
+<div class="callout primary" id="Events">
+  <h3>
+    Events
+    <img id="seatgeek" src="https://upload.wikimedia.org/wikipedia/en/1/1b/SeatGeek.png">
+  </h3>
+
+  <p>
+    Here are today's events:
+  </p>
+  <ul>
+    <% @events.each do |event| %>
+    <p><a href="<%= event['url']%>"><%= event["title"] %></a></p>
+    <% end %>
+  </ul>
+</div>
